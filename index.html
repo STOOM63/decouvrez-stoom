@@ -99,7 +99,48 @@ function showSlides(n) {
     }
     slides[slideIndex-1].style.display = "block";  
 }
+<script>
+// Fonctionnalité actuelle pour les flèches
+let slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+    showSlides(slideIndex += n);
+}
+
+function showSlides(n) {
+    let i;
+    let slides = document.getElementsByClassName("slides");
+    if (n > slides.length) {slideIndex = 1}    
+    if (n < 1) {slideIndex = slides.length}
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";  
+    }
+    slides[slideIndex-1].style.display = "block";  
+}
+
+// Détection du swipe
+let startX;
+let threshold = 50;  // Distance minimale pour être considéré comme un swipe
+
+document.addEventListener('touchstart', function(e) {
+    startX = e.changedTouches[0].clientX;
+}, false);
+
+document.addEventListener('touchend', function(e) {
+    let endX = e.changedTouches[0].clientX;
+    let diffX = endX - startX;
+    
+    if (Math.abs(diffX) > threshold) {
+        if (diffX > 0) {
+            plusSlides(-1);  // Swipe vers la droite
+        } else {
+            plusSlides(1);   // Swipe vers la gauche
+        }
+    }
+}, false);
 </script>
+
 
 <footer>
     <p>&copy; 2024 Stoom Clermont-Ferrand. Tous droits réservés.</p>
