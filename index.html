@@ -8,7 +8,7 @@
     <title>Découvrez STOOM Clermont-Ferrand</title>
     <style>
         body {
-            font-family: Roboto, sans-serif;
+            font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             margin: 0;
             padding: 0;
@@ -65,8 +65,14 @@
 </head>
 <body>
 
+<!-- Ajout de la musique en arrière-plan -->
+<audio autoplay loop>
+    <source src="musique.mp3" type="audio/mpeg">
+    Votre navigateur ne supporte pas l'élément audio.
+</audio>
+
 <header>
-    <h1>Découvrez STOOM Clermont-FD</h1>
+    <h1>Découvrez STOOM Clermont-Ferrand</h1>
 </header>
 
 <div class="slider-container">
@@ -82,6 +88,7 @@
 </div>
 
 <script>
+// Fonctionnalité de navigation par flèches
 let slideIndex = 1;
 showSlides(slideIndex);
 
@@ -100,7 +107,7 @@ function showSlides(n) {
     slides[slideIndex-1].style.display = "block";  
 }
 
-// Détection du swipe
+// Détection du swipe (glissement du doigt)
 let startX;
 let threshold = 50;  // Distance minimale pour être considéré comme un swipe
 
